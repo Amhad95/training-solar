@@ -1,7 +1,7 @@
 // Application constants - Arabic LMS for Solar PV Training
 
-export const APP_NAME = "منصة التدريب على الطاقة الشمسية";
-export const APP_SHORT_NAME = "منصة التدريب";
+export const APP_NAME = "نافذة المتدرب";
+export const APP_SHORT_NAME = "نافذة المتدرب";
 
 // User Roles
 export const USER_ROLES = {
