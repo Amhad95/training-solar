@@ -1,20 +1,25 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Sun, Mail, Lock, User, Phone, MapPin, Eye, EyeOff } from "lucide-react";
+import { Sun, Mail, Lock, User, Phone, MapPin, Eye, EyeOff, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { SUDAN_STATES, EDUCATION_LEVELS, APP_NAME } from "@/lib/constants";
 
+// Demo credentials
+const DEMO_EMAIL = "demo@nafizat.app";
+const DEMO_PASSWORD = "demo123456";
+
 export default function Auth() {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const [demoLoading, setDemoLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   
   // Login form state
@@ -33,6 +38,39 @@ export default function Auth() {
     educationLevel: "",
     referralSource: "",
   });
+
+  const handleDemoLogin = async () => {
+    setDemoLoading(true);
+
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: DEMO_EMAIL,
+        password: DEMO_PASSWORD,
+      });
+
+      if (error) {
+        toast({
+          title: "خطأ في الدخول التجريبي",
+          description: "حساب العرض التجريبي غير متاح حالياً. يرجى التواصل مع الإدارة.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "مرحباً بك في العرض التجريبي",
+          description: "يمكنك الآن استكشاف المنصة",
+        });
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      toast({
+        title: "خطأ",
+        description: "حدث خطأ غير متوقع",
+        variant: "destructive",
+      });
+    } finally {
+      setDemoLoading(false);
+    }
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,7 +93,7 @@ export default function Auth() {
       } else {
         toast({
           title: "تم تسجيل الدخول بنجاح",
-          description: "مرحباً بك في منصة التدريب",
+          description: "مرحباً بك في نافذة المتدرب",
         });
         navigate("/dashboard");
       }
@@ -126,12 +164,30 @@ export default function Auth() {
     <div className="min-h-screen flex items-center justify-center p-4 gradient-subtle">
       <div className="w-full max-w-md">
         {/* Logo */}
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center mx-auto mb-4 shadow-primary">
-            <Sun className="w-9 h-9 text-primary-foreground" />
+        <div className="text-center mb-6">
+          <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center mx-auto mb-3 shadow-primary">
+            <Sun className="w-8 h-8 text-primary-foreground" />
           </div>
-          <h1 className="text-2xl font-bold text-foreground">{APP_NAME}</h1>
-          <p className="text-muted-foreground mt-1">الدُفعة التجريبية 01</p>
+          <h1 className="text-xl font-bold text-foreground">{APP_NAME}</h1>
+          <p className="text-muted-foreground text-sm mt-1">الدُفعة التجريبية 01</p>
+        </div>
+
+        {/* Demo Login Button */}
+        <Button
+          onClick={handleDemoLogin}
+          disabled={demoLoading}
+          variant="outline"
+          size="lg"
+          className="w-full mb-4 border-primary/50 text-primary hover:bg-primary/10 hover:text-primary gap-2"
+        >
+          <Play className="w-4 h-4" />
+          {demoLoading ? "جاري الدخول..." : "جرّب المنصة الآن"}
+        </Button>
+
+        <div className="flex items-center gap-3 mb-4">
+          <div className="flex-1 h-px bg-border" />
+          <span className="text-xs text-muted-foreground">أو</span>
+          <div className="flex-1 h-px bg-border" />
         </div>
 
         <Card className="shadow-soft">

@@ -40,7 +40,7 @@ export default function Index() {
           <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center mx-auto mb-4 animate-pulse-soft">
             <Sun className="w-9 h-9 text-primary-foreground" />
           </div>
-          <h1 className="text-xl font-bold text-foreground">{APP_NAME}</h1>
+          <h1 className="text-lg font-bold text-foreground">{APP_NAME}</h1>
           <p className="text-muted-foreground mt-2">جاري التحميل...</p>
         </div>
       </div>

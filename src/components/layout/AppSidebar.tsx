@@ -113,7 +113,7 @@ export function AppSidebar({ isOpen, onClose, userRole = "student" }: AppSidebar
                 <Sun className="w-6 h-6 text-primary-foreground" />
               </div>
               <div>
-                <h1 className="font-bold text-sidebar-foreground">{APP_SHORT_NAME}</h1>
+                <h1 className="text-sm font-bold text-sidebar-foreground">{APP_SHORT_NAME}</h1>
                 <p className="text-xs text-muted-foreground">الطاقة الشمسية</p>
               </div>
             </div>
