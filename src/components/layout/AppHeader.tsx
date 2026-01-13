@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Menu, Bell, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,6 +12,7 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { USER_ROLE_LABELS } from "@/lib/constants";
+import { useAuth } from "@/hooks/useAuth";
 
 interface AppHeaderProps {
   onMenuClick: () => void;
@@ -19,6 +21,9 @@ interface AppHeaderProps {
 }
 
 export function AppHeader({ onMenuClick, userName = "مستخدم", userRole = "student" }: AppHeaderProps) {
+  const navigate = useNavigate();
+  const { signOut } = useAuth();
+  
   const initials = userName
     .split(" ")
     .map((n) => n[0])
@@ -26,6 +31,11 @@ export function AppHeader({ onMenuClick, userName = "مستخدم", userRole = "
     .slice(0, 2);
 
   const roleLabel = USER_ROLE_LABELS[userRole] || "متدرب";
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/auth');
+  };
 
   return (
     <header className="sticky top-0 z-30 h-16 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -64,8 +74,8 @@ export function AppHeader({ onMenuClick, userName = "مستخدم", userRole = "
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="gap-2 px-2">
                 <Avatar className="h-8 w-8">
-                  <AvatarFallback className="bg-primary/10 text-primary text-sm font-medium">
-                    {initials}
+                <AvatarFallback className="bg-primary/10 text-primary text-sm font-medium">
+                    {initials || <User className="w-4 h-4" />}
                   </AvatarFallback>
                 </Avatar>
                 <span className="hidden sm:inline text-sm font-medium">{userName}</span>
@@ -79,12 +89,15 @@ export function AppHeader({ onMenuClick, userName = "مستخدم", userRole = "
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => navigate('/profile')}>
                 <User className="w-4 h-4 ml-2" />
                 الملف الشخصي
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-destructive focus:text-destructive">
+              <DropdownMenuItem 
+                className="text-destructive focus:text-destructive"
+                onClick={handleSignOut}
+              >
                 تسجيل الخروج
               </DropdownMenuItem>
             </DropdownMenuContent>

@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { 
   LayoutDashboard, 
   BookOpen, 
@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { APP_SHORT_NAME } from "@/lib/constants";
+import { useAuth } from "@/hooks/useAuth";
 
 interface NavItem {
   path: string;
@@ -67,6 +68,13 @@ const managerNav: NavItem[] = [
 
 export function AppSidebar({ isOpen, onClose, userRole = "student" }: AppSidebarProps) {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { signOut } = useAuth();
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/auth');
+  };
   
   const getNavItems = () => {
     switch (userRole) {
@@ -156,6 +164,7 @@ export function AppSidebar({ isOpen, onClose, userRole = "student" }: AppSidebar
             <Button
               variant="ghost"
               className="w-full justify-start gap-3 text-muted-foreground hover:text-destructive"
+              onClick={handleSignOut}
             >
               <LogOut className="w-5 h-5" />
               <span>تسجيل الخروج</span>
