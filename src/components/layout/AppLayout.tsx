@@ -2,14 +2,14 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { AppSidebar } from "./AppSidebar";
 import { AppHeader } from "./AppHeader";
+import { useAuth } from "@/hooks/useAuth";
 
-interface AppLayoutProps {
-  userName?: string;
-  userRole?: string;
-}
-
-export function AppLayout({ userName = "أحمد محمد", userRole = "student" }: AppLayoutProps) {
+export function AppLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { profile, roles } = useAuth();
+  
+  const userName = profile?.full_name || '';
+  const userRole = roles[0] || 'student';
 
   return (
     <div className="min-h-screen bg-background">
