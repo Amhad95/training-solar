@@ -14,6 +14,7 @@ import Attendance from "./pages/Attendance";
 import Assignments from "./pages/Assignments";
 import Competencies from "./pages/Competencies";
 import Grades from "./pages/Grades";
+import Help from "./pages/Help";
 import Unauthorized from "./pages/Unauthorized";
 import NotFound from "./pages/NotFound";
 
@@ -50,7 +51,7 @@ const App = () => (
               <Route path="/attendance" element={<Attendance />} />
               <Route path="/competencies" element={<Competencies />} />
               <Route path="/resources" element={<Dashboard />} />
-              <Route path="/help" element={<Dashboard />} />
+              <Route path="/help" element={<Help />} />
             </Route>
             
             {/* 404 */}
