@@ -47,7 +47,7 @@ export function LandingHero() {
       </div>
 
       <div className="container relative z-10">
-        <div className="max-w-3xl flex flex-col gap-4 md:gap-6 text-center mx-auto animate-slide-up items-center">
+        <div className="max-w-3xl flex flex-col gap-2 md:gap-6 text-center mx-auto animate-slide-up items-center">
           
           <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-tight drop-shadow-sm">
             {t("hero.headline")}
@@ -57,7 +57,7 @@ export function LandingHero() {
             {t("hero.subheadline")}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-3 md:pt-6">
             <a href="[Google Form URL]" target="_blank" rel="noreferrer" className="w-full sm:w-auto">
               <Button size="lg" className="w-full gap-2 text-md h-14 px-8 shadow-lg shadow-primary/20">
                 {t("nav.apply")}
