@@ -8,7 +8,7 @@ export function LandingHero() {
   const ArrowIcon = language === "ar" ? ArrowLeft : ArrowRight;
 
   return (
-    <section className="relative overflow-hidden bg-background pt-16 pb-32 md:pt-20 md:pb-48 min-h-[85vh] flex items-start">
+    <section className="relative overflow-hidden bg-background pt-16 pb-32 md:pt-20 md:pb-48 min-h-[85vh] flex items-start pt-28 md:pt-32">
       
       {/* Background Layer: The Artwork with Cloud-like Diffusion Fade */}
       <div className="absolute inset-0 z-0 flex items-end justify-center pointer-events-none select-none overflow-hidden">
@@ -21,16 +21,16 @@ export function LandingHero() {
             backgroundPosition: 'bottom center',
             backgroundSize: 'max(100%, 1024px) auto', 
             backgroundRepeat: 'no-repeat',
-            WebkitMaskImage: 'radial-gradient(ellipse 100% 80% at center bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)',
-            maskImage: 'radial-gradient(ellipse 100% 80% at center bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 100% 70% at center bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)',
+            maskImage: 'radial-gradient(ellipse 100% 70% at center bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)',
           }}
         />
 
-        {/* Soft Linear Atmospheric Mist Layers - reduced top diffusion */}
+        {/* Soft Linear Atmospheric Mist Layers */}
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/40 to-transparent h-[35%] md:h-[30%]" />
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/10 to-transparent h-1/4" />
-        <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-background via-transparent to-transparent w-1/6 md:w-1/12" />
-        <div className="absolute inset-y-0 right-0 bg-gradient-to-l from-background via-transparent to-transparent w-1/6 md:w-1/12" />
+        <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-background via-transparent to-transparent w-1/4 md:w-1/6" />
+        <div className="absolute inset-y-0 right-0 bg-gradient-to-l from-background via-transparent to-transparent w-1/4 md:w-1/6" />
       </div>
 
       <div className="container relative z-10">
