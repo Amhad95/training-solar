@@ -8,14 +8,14 @@ export function LandingHero() {
   const ArrowIcon = language === "ar" ? ArrowLeft : ArrowRight;
 
   return (
-    <section className="relative overflow-hidden bg-background pt-16 pb-32 md:pt-20 md:pb-48 min-h-[85vh] flex items-start pt-28 md:pt-32">
+    <section className="relative flex min-h-[72vh] items-start overflow-hidden bg-background pt-24 pb-16 md:min-h-[85vh] md:pt-32 md:pb-48">
       
       {/* Background Layer: The Artwork with Cloud-like Diffusion Fade */}
       <div className="absolute inset-0 z-0 flex items-end justify-center pointer-events-none select-none overflow-hidden">
         
-        {/* Core Artwork — Mobile: contain (full width visible) */}
+        {/* Core Artwork — Mobile: enlarged slightly so it keeps the same visual weight as desktop */}
         <div 
-          className="absolute bottom-0 w-full h-full opacity-95 md:hidden"
+          className="absolute bottom-4 left-1/2 h-full w-[135%] -translate-x-1/2 opacity-95 md:hidden"
           style={{
             backgroundImage: `url('/hero-artwork.png')`,
             backgroundPosition: 'bottom center',
