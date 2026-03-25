@@ -24,7 +24,7 @@ export function LandingHero() {
           }}
         />
         {/* Mobile-only top diffusion: large soft fade to erase the image's top edge */}
-        <div className="absolute inset-x-0 top-[5%] h-[50%] bg-gradient-to-b from-background via-background/80 via-40% to-transparent md:hidden z-[1]" />
+        <div className="absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b from-background via-background/85 via-45% to-transparent md:hidden z-[1]" />
 
         {/* Core Artwork — Desktop: cover */}
         <div 
