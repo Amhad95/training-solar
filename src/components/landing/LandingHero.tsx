@@ -15,7 +15,7 @@ export function LandingHero() {
         
         {/* Core Artwork Layer with Radial Masking for Organic Feathery Edges */}
         <div 
-          className="absolute bottom-0 w-full h-full opacity-95"
+          className="absolute -bottom-16 md:-bottom-8 w-full h-[120%] opacity-95"
           style={{
             backgroundImage: `url('/hero-artwork.png')`,
             backgroundPosition: 'bottom center',
