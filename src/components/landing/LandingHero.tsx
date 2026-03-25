@@ -15,15 +15,16 @@ export function LandingHero() {
         
         {/* Core Artwork Layer with Radial Masking for Organic Feathery Edges */}
         <div 
-          className="absolute bottom-0 w-full h-[120%] md:h-[150%] max-w-[2000px] opacity-95"
+          className="absolute bottom-0 w-full h-full opacity-95"
           style={{
-            backgroundImage: `url('/hero-artwork.png')`, // Updated to .png
+            backgroundImage: `url('/hero-artwork.png')`,
             backgroundPosition: 'bottom center',
-            backgroundSize: 'cover',
+            // Use 100% width on desktop to prevent zoom-in. Use cover on mobile to preserve composition.
+            backgroundSize: 'max(100%, 1024px) auto', 
             backgroundRepeat: 'no-repeat',
             // Radial mask: solid at the bottom center, softly diffusing to completely transparent edges & top
-            WebkitMaskImage: 'radial-gradient(110% 100% at center bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%)',
-            maskImage: 'radial-gradient(110% 100% at center bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 100% 70% at center bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)',
+            maskImage: 'radial-gradient(ellipse 100% 70% at center bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)',
           }}
         />
 
