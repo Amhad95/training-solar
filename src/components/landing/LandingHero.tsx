@@ -8,23 +8,24 @@ export function LandingHero() {
   const ArrowIcon = language === "ar" ? ArrowLeft : ArrowRight;
 
   return (
-    <section className="relative flex min-h-[72vh] items-start overflow-hidden bg-background pt-24 pb-16 md:min-h-[85vh] md:pt-32 md:pb-48">
+    <section className="relative flex min-h-[72vh] items-start overflow-hidden bg-background pt-16 pb-8 md:min-h-[85vh] md:pt-32 md:pb-48">
       
       {/* Background Layer: The Artwork with Cloud-like Diffusion Fade */}
       <div className="absolute inset-0 z-0 flex items-end justify-center pointer-events-none select-none overflow-hidden">
         
-        {/* Core Artwork — Mobile: enlarged slightly so it keeps the same visual weight as desktop */}
+        {/* Core Artwork — Mobile: raised up to match desktop composition */}
         <div 
-          className="absolute bottom-4 left-1/2 h-full w-[135%] -translate-x-1/2 opacity-95 md:hidden"
+          className="absolute bottom-[10%] left-1/2 h-[110%] w-[140%] -translate-x-1/2 opacity-95 md:hidden"
           style={{
             backgroundImage: `url('/hero-artwork.png')`,
             backgroundPosition: 'bottom center',
             backgroundSize: 'contain', 
             backgroundRepeat: 'no-repeat',
-            WebkitMaskImage: 'radial-gradient(ellipse 100% 70% at center bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)',
-            maskImage: 'radial-gradient(ellipse 100% 70% at center bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)',
           }}
         />
+        {/* Mobile-only top diffusion: fades the artwork's top edge into the background */}
+        <div className="absolute inset-x-0 top-[20%] h-[35%] bg-gradient-to-b from-background via-background/60 to-transparent md:hidden z-[1]" />
+
         {/* Core Artwork — Desktop: cover */}
         <div 
           className="absolute -bottom-8 w-full h-[120%] opacity-95 hidden md:block"
@@ -46,7 +47,7 @@ export function LandingHero() {
       </div>
 
       <div className="container relative z-10">
-        <div className="max-w-3xl flex flex-col gap-6 text-center mx-auto animate-slide-up items-center">
+        <div className="max-w-3xl flex flex-col gap-4 md:gap-6 text-center mx-auto animate-slide-up items-center">
           
           <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-tight drop-shadow-sm">
             {t("hero.headline")}
