@@ -8,14 +8,14 @@ export function LandingHero() {
   const ArrowIcon = language === "ar" ? ArrowLeft : ArrowRight;
 
   return (
-    <section className="relative flex min-h-[72vh] items-start overflow-hidden bg-background pt-16 pb-8 md:min-h-[85vh] md:pt-32 md:pb-48">
+    <section className="relative flex min-h-[72vh] items-start overflow-hidden bg-background pt-10 pb-8 md:min-h-[85vh] md:pt-32 md:pb-48">
       
       {/* Background Layer: The Artwork with Cloud-like Diffusion Fade */}
       <div className="absolute inset-0 z-0 flex items-end justify-center pointer-events-none select-none overflow-hidden">
         
-        {/* Core Artwork — Mobile: raised up to match desktop composition */}
+        {/* Core Artwork — Mobile: raised up to sit behind content */}
         <div 
-          className="absolute bottom-[10%] left-1/2 h-[110%] w-[140%] -translate-x-1/2 opacity-95 md:hidden"
+          className="absolute bottom-[5%] left-1/2 h-[130%] w-[160%] -translate-x-1/2 opacity-95 md:hidden"
           style={{
             backgroundImage: `url('/hero-artwork.png')`,
             backgroundPosition: 'bottom center',
@@ -23,8 +23,8 @@ export function LandingHero() {
             backgroundRepeat: 'no-repeat',
           }}
         />
-        {/* Mobile-only top diffusion: fades the artwork's top edge into the background */}
-        <div className="absolute inset-x-0 top-[20%] h-[35%] bg-gradient-to-b from-background via-background/60 to-transparent md:hidden z-[1]" />
+        {/* Mobile-only top diffusion: large soft fade to erase the image's top edge */}
+        <div className="absolute inset-x-0 top-[5%] h-[50%] bg-gradient-to-b from-background via-background/80 via-40% to-transparent md:hidden z-[1]" />
 
         {/* Core Artwork — Desktop: cover */}
         <div 
@@ -47,7 +47,7 @@ export function LandingHero() {
       </div>
 
       <div className="container relative z-10">
-        <div className="max-w-3xl flex flex-col gap-4 md:gap-6 text-center mx-auto animate-slide-up items-center">
+        <div className="max-w-3xl flex flex-col gap-2 md:gap-6 text-center mx-auto animate-slide-up items-center">
           
           <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-tight drop-shadow-sm">
             {t("hero.headline")}
@@ -57,7 +57,7 @@ export function LandingHero() {
             {t("hero.subheadline")}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-3 md:pt-6">
             <a href="[Google Form URL]" target="_blank" rel="noreferrer" className="w-full sm:w-auto">
               <Button size="lg" className="w-full gap-2 text-md h-14 px-8 shadow-lg shadow-primary/20">
                 {t("nav.apply")}
