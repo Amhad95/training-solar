@@ -17,7 +17,7 @@ export function LandingHero() {
         <div 
           className="absolute bottom-0 w-full h-[120%] md:h-[150%] max-w-[2000px] opacity-95"
           style={{
-            backgroundImage: `url('/hero-artwork.jpg')`, // Make sure the uploaded image is saved as /public/hero-artwork.jpg
+            backgroundImage: `url('/hero-artwork.png')`, // Updated to .png
             backgroundPosition: 'bottom center',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
