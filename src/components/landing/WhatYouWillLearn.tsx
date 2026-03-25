@@ -37,9 +37,9 @@ export function WhatYouWillLearn() {
             </ul>
           </div>
           
-          <div className="relative animate-fade-in hidden md:block aspect-[3/4] rounded-2xl overflow-hidden glass border shadow-xl">
+          <div className="relative animate-fade-in hidden md:block aspect-[3/4] rounded-2xl overflow-hidden">
              <img 
-               src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&auto=format&fit=crop&q=60" 
+               src={solarWorkerImg} 
                alt="Solar Technical Training" 
                className="object-cover w-full h-full"
              />
