@@ -1,5 +1,6 @@
 import { CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import solarWorkerImg from "@/assets/solar-worker.png";
 
 export function WhatYouWillLearn() {
   const { t } = useLanguage();
