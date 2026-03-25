@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { LandingNavbar } from "@/components/landing/LandingNavbar";
 import { LandingHero } from "@/components/landing/LandingHero";
+import { PartnershipSection } from "@/components/landing/PartnershipSection";
 import { ProgramOverview } from "@/components/landing/ProgramOverview";
 import { TrainingModel } from "@/components/landing/TrainingModel";
 import { WhatYouWillLearn } from "@/components/landing/WhatYouWillLearn";
@@ -25,6 +26,7 @@ export default function Index() {
       
       <main className="flex-1">
         <LandingHero />
+        <PartnershipSection />
         <ProgramOverview />
         <TrainingModel />
         <WhatYouWillLearn />
