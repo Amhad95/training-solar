@@ -8,61 +8,57 @@ export function LandingHero() {
   const ArrowIcon = language === "ar" ? ArrowLeft : ArrowRight;
 
   return (
-    <section className="relative overflow-hidden bg-background pt-16 pb-32">
-      <div className="absolute inset-0 z-0 bg-muted/20" />
+    <section className="relative overflow-hidden bg-background pt-24 pb-32 md:pt-32 md:pb-48 min-h-[85vh] flex items-center">
+      
+      {/* Background Layer: The Artwork with Cloud-like Diffusion Fade */}
+      <div className="absolute inset-0 z-0 flex items-end justify-center pointer-events-none select-none overflow-hidden">
+        
+        {/* Core Artwork Layer with Radial Masking for Organic Feathery Edges */}
+        <div 
+          className="absolute bottom-0 w-full h-[120%] md:h-[150%] max-w-[2000px] opacity-95"
+          style={{
+            backgroundImage: `url('/hero-artwork.jpg')`, // Make sure the uploaded image is saved as /public/hero-artwork.jpg
+            backgroundPosition: 'bottom center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            // Radial mask: solid at the bottom center, softly diffusing to completely transparent edges & top
+            WebkitMaskImage: 'radial-gradient(110% 100% at center bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%)',
+            maskImage: 'radial-gradient(110% 100% at center bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 90%)',
+          }}
+        />
+
+        {/* Soft Linear Atmospheric Mist Layers to reinforce blending into the light background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/60 to-transparent h-1/2" />
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/10 to-transparent h-1/4" />
+        <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-background via-transparent to-transparent w-1/4 md:w-1/6" />
+        <div className="absolute inset-y-0 right-0 bg-gradient-to-l from-background via-transparent to-transparent w-1/4 md:w-1/6" />
+      </div>
 
       <div className="container relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="flex flex-col gap-6 text-center lg:text-start animate-slide-up">
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
-              {t("hero.headline")}
-            </h1>
-            
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0">
-              {t("hero.subheadline")}
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-              <a href="[Google Form URL]" target="_blank" rel="noreferrer" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full gap-2 text-md h-12">
-                  {t("nav.apply")}
-                  <ArrowIcon className="w-4 h-4 rtl-flip" />
-                </Button>
-              </a>
-              <Link to="/auth" className="w-full sm:w-auto">
-                <Button size="lg" variant="outline" className="w-full h-12 border-primary/20 hover:bg-primary/5">
-                  {t("nav.login")}
-                </Button>
-              </Link>
-            </div>
+        <div className="max-w-3xl flex flex-col gap-6 text-center lg:text-start mx-auto lg:mx-0 animate-slide-up">
+          
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-foreground leading-tight drop-shadow-sm">
+            {t("hero.headline")}
+          </h1>
+          
+          <p className="text-lg md:text-xl text-muted-foreground w-full font-medium bg-background/40 backdrop-blur-sm p-4 rounded-xl mix-blend-plus-darker">
+            {t("hero.subheadline")}
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-6">
+            <a href="[Google Form URL]" target="_blank" rel="noreferrer" className="w-full sm:w-auto">
+              <Button size="lg" className="w-full gap-2 text-md h-14 px-8 shadow-lg shadow-primary/20">
+                {t("nav.apply")}
+                <ArrowIcon className="w-4 h-4 rtl-flip" />
+              </Button>
+            </a>
+            <Link to="/auth" className="w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="w-full h-14 px-8 bg-background/80 backdrop-blur-md border border-primary/20 hover:bg-primary/5 hover:border-primary/40 shadow-sm transition-all">
+                {t("nav.login")}
+              </Button>
+            </Link>
           </div>
 
-          <div className="relative animate-fade-in mx-auto w-full max-w-lg lg:max-w-none">
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden border shadow-2xl relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-black/40 to-transparent z-10" />
-              <img 
-                src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2672&auto=format&fit=crop" 
-                alt="Solar Panels Installation" 
-                className="object-cover w-full h-full"
-              />
-            </div>
-
-            {/* Floating Info card */}
-            <div className={`absolute -bottom-6 ${language === 'ar' ? '-right-6' : '-left-6'} p-4 bg-background rounded-xl border shadow-xl flex items-center gap-4 z-20`}>
-              <div className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center text-primary-foreground font-bold text-xl">
-                5m
-              </div>
-              <div className="text-start">
-                <p className="font-bold text-foreground">
-                  {language === 'en' ? 'Intensive Program' : 'برنامج مكثف'}
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  {language === 'en' ? 'Full-time commitment' : 'تفرغ تام'}
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
