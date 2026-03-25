@@ -53,7 +53,7 @@ export function LandingHero() {
             {t("hero.headline")}
           </h1>
           
-          <p className="text-base md:text-xl w-full font-bold text-popover-foreground bg-inherit">
+          <p className="text-base md:text-xl w-full font-bold text-stone-950">
             {t("hero.subheadline")}
           </p>
           
