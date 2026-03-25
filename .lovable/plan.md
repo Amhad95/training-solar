@@ -1,27 +1,23 @@
 
-Goal: move only the hero artwork downward so the person’s head stops disappearing behind the top diffusion, especially on mobile.
 
-1. Update only the artwork layer in `src/components/landing/LandingHero.tsx`:
-   - keep the text block exactly where it is
-   - keep the diffusion/mist layers exactly where they are
-   - lower the background artwork itself by adding a downward offset to the core image layer
+## Fix: Mobile-specific hero adjustments
 
-2. Apply the offset on the image layer, not the section:
-   - change the artwork positioning from a strict bottom anchor to a lower visual anchor
-   - use a stronger downward offset on mobile and a smaller one on larger screens
-   - if lowering the image creates empty space, slightly increase the artwork layer height/coverage so it still fills cleanly
+**Problems on mobile (from screenshot):**
+1. Image doesn't scale to mobile width — `backgroundSize: 'max(100%, 1024px) auto'` forces minimum 1024px, way too wide for mobile
+2. Top diffusion gradient is `h-[35%]` — too tall on small screens, covers the artwork
+3. Text is too large for mobile (`text-3xl` headline, `text-lg` subheadline)
 
-3. Do not change in this pass:
-   - headline size/alignment
-   - subheadline layout
-   - button placement
-   - diffusion gradients or mask stops
+**Changes — all mobile-only, won't affect md+ screens:**
 
-4. Verify the result at mobile and desktop widths:
-   - the image sits lower
-   - the head is fully visible below the diffusion
-   - the solar panels/pump remain visible without awkward cropping
+File: `src/components/landing/LandingHero.tsx`
 
-Technical details:
-- File to adjust: `src/components/landing/LandingHero.tsx`
-- Likely change point: the core artwork div using `backgroundImage`, `backgroundPosition`, and sizing
+1. **Image sizing**: Change `backgroundSize` to be responsive — use a CSS approach where mobile gets `cover` or a smaller min-width (e.g., `max(140%, 600px) auto`) while desktop keeps the current `max(100%, 1024px) auto`. Since inline styles can't use media queries, switch to using Tailwind classes with a wrapper approach or use two divs (one mobile, one desktop). Simplest: just lower the min to `max(100%, 700px)` which helps mobile without hurting desktop — but better to use responsive classes.
+
+   Actually, the cleanest fix: use `backgroundSize: 'cover'` on mobile via two class-toggled layers, or just change to `cover` universally since `cover` will fill the container on all sizes. The `max(100%, 1024px)` was meant to prevent the image from being too small on wide screens, but `cover` achieves the same thing naturally.
+
+2. **Diffusion**: Change top gradient from `h-[35%]` to `h-[25%] md:h-[30%]` — shorter on mobile
+
+3. **Text sizing**: Reduce headline to `text-2xl md:text-4xl lg:text-5xl` and subheadline to `text-base md:text-xl`
+
+4. **Side gradients**: Reduce mobile side gradients from `w-1/4` to `w-1/6` on mobile too (use `w-[10%] md:w-1/6`)
+
