@@ -15,7 +15,7 @@ export function LandingHero() {
         
         {/* Core Artwork — Mobile: contain (full width visible) */}
         <div 
-          className="absolute -bottom-16 w-full h-[120%] opacity-95 md:hidden"
+          className="absolute bottom-0 w-full h-full opacity-95 md:hidden"
           style={{
             backgroundImage: `url('/hero-artwork.png')`,
             backgroundPosition: 'bottom center',
