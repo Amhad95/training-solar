@@ -49,7 +49,7 @@ export function LandingHero() {
       <div className="container relative z-10">
         <div className="max-w-3xl flex flex-col gap-2 md:gap-6 text-center mx-auto animate-slide-up items-center">
           
-          <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-tight drop-shadow-sm">
+          <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight text-foreground leading-tight drop-shadow-sm lg:text-4xl">
             {t("hero.headline")}
           </h1>
           
