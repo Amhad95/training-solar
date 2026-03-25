@@ -13,9 +13,21 @@ export function LandingHero() {
       {/* Background Layer: The Artwork with Cloud-like Diffusion Fade */}
       <div className="absolute inset-0 z-0 flex items-end justify-center pointer-events-none select-none overflow-hidden">
         
-        {/* Core Artwork Layer with Radial Masking for Organic Feathery Edges */}
+        {/* Core Artwork — Mobile: contain (full width visible) */}
         <div 
-          className="absolute -bottom-16 md:-bottom-8 w-full h-[120%] opacity-95"
+          className="absolute -bottom-16 w-full h-[120%] opacity-95 md:hidden"
+          style={{
+            backgroundImage: `url('/hero-artwork.png')`,
+            backgroundPosition: 'bottom center',
+            backgroundSize: 'contain', 
+            backgroundRepeat: 'no-repeat',
+            WebkitMaskImage: 'radial-gradient(ellipse 100% 70% at center bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)',
+            maskImage: 'radial-gradient(ellipse 100% 70% at center bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%)',
+          }}
+        />
+        {/* Core Artwork — Desktop: cover */}
+        <div 
+          className="absolute -bottom-8 w-full h-[120%] opacity-95 hidden md:block"
           style={{
             backgroundImage: `url('/hero-artwork.png')`,
             backgroundPosition: 'bottom center',
