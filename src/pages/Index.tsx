@@ -1,17 +1,20 @@
 import { useEffect } from "react";
 import { LandingNavbar } from "@/components/landing/LandingNavbar";
 import { LandingHero } from "@/components/landing/LandingHero";
-import { TwoStatePilot } from "@/components/landing/TwoStatePilot";
-import { ObjectivesImpact } from "@/components/landing/ObjectivesImpact";
-import { TrainingJourney } from "@/components/landing/TrainingJourney";
-import { PartnershipSection } from "@/components/landing/PartnershipSection";
+import { ProgramOverview } from "@/components/landing/ProgramOverview";
+import { TrainingModel } from "@/components/landing/TrainingModel";
+import { WhatYouWillLearn } from "@/components/landing/WhatYouWillLearn";
+import { ImplementationLocations } from "@/components/landing/ImplementationLocations";
+import { WhoShouldApply } from "@/components/landing/WhoShouldApply";
+import { HowToApply } from "@/components/landing/HowToApply";
+import { ProgramOutcomes } from "@/components/landing/ProgramOutcomes";
+import { LandingFAQ } from "@/components/landing/LandingFAQ";
 import { LandingFooter } from "@/components/landing/LandingFooter";
 import { useLanguage } from "@/hooks/useLanguage";
 
 export default function Index() {
   const { language } = useLanguage();
 
-  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -22,10 +25,14 @@ export default function Index() {
       
       <main className="flex-1">
         <LandingHero />
-        <TwoStatePilot />
-        <ObjectivesImpact />
-        <TrainingJourney />
-        <PartnershipSection />
+        <ProgramOverview />
+        <TrainingModel />
+        <WhatYouWillLearn />
+        <ImplementationLocations />
+        <WhoShouldApply />
+        <HowToApply />
+        <ProgramOutcomes />
+        <LandingFAQ />
       </main>
 
       <LandingFooter />

@@ -2,18 +2,17 @@ import { Link } from "react-router-dom";
 import { Sun, Menu, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
-import { APP_NAME } from "@/lib/constants";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export function LandingNavbar() {
   const { language, toggleLanguage, t } = useLanguage();
 
   const navLinks = [
-    { href: "#", key: "nav.home" },
-    { href: "#pilot", key: "nav.about" },
-    { href: "#program", key: "nav.program" },
-    { href: "#partners", key: "nav.partners" },
-    { href: "#contact", key: "nav.contact" },
+    { href: "#overview", key: "nav.overview" },
+    { href: "#model", key: "nav.model" },
+    { href: "#locations", key: "nav.locations" },
+    { href: "#eligibility", key: "nav.eligibility" },
+    { href: "#faq", key: "nav.faq" },
   ];
 
   return (
@@ -50,9 +49,15 @@ export function LandingNavbar() {
             </span>
           </Button>
 
-          <Link to="/auth">
-            <Button size="sm" className="shrink-0">{t("nav.login")}</Button>
+          {/* Secondary CTA */}
+          <Link to="/auth" className="hidden sm:inline-block">
+            <Button variant="outline" size="sm" className="shrink-0">{t("nav.login")}</Button>
           </Link>
+
+          {/* Primary CTA */}
+          <a href="[Google Form URL]" target="_blank" rel="noreferrer">
+            <Button size="sm" className="shrink-0">{t("nav.apply")}</Button>
+          </a>
 
           {/* Mobile Menu */}
           <Sheet>
@@ -72,6 +77,16 @@ export function LandingNavbar() {
                     {t(link.key)}
                   </a>
                 ))}
+                
+                <div className="h-px bg-border my-2" />
+                
+                <a href="[Google Form URL]" target="_blank" rel="noreferrer">
+                  <Button className="w-full">{t("nav.apply")}</Button>
+                </a>
+                
+                <Link to="/auth" className="w-full">
+                  <Button variant="outline" className="w-full">{t("nav.login")}</Button>
+                </Link>
               </div>
             </SheetContent>
           </Sheet>
