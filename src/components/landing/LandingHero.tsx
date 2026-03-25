@@ -8,7 +8,7 @@ export function LandingHero() {
   const ArrowIcon = language === "ar" ? ArrowLeft : ArrowRight;
 
   return (
-    <section className="relative flex min-h-[72vh] items-start overflow-hidden bg-background pt-10 pb-8 md:min-h-[85vh] md:pt-20 md:pb-48">
+    <section className="relative flex min-h-[72vh] items-start overflow-hidden bg-background pt-10 pb-8 md:min-h-[85vh] md:pt-32 md:pb-48">
       
       {/* Background Layer: The Artwork with Cloud-like Diffusion Fade */}
       <div className="absolute inset-0 z-0 flex items-end justify-center pointer-events-none select-none overflow-hidden">
