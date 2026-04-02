@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { Sun, Menu, Globe } from "lucide-react";
+import { Menu, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import radianceLogo from "@/assets/radiance-logo.png";
 
 export function LandingNavbar() {
   const { language, toggleLanguage, t } = useLanguage();
@@ -18,11 +19,8 @@ export function LandingNavbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center shadow-primary shrink-0">
-            <Sun className="w-5 h-5 text-primary-foreground" />
-          </div>
-          <span className="font-bold text-lg hidden sm:inline-block">Radiance Co. LTD</span>
+        <div className="flex items-center">
+          <img src={radianceLogo} alt="Radiance" className="h-7 sm:h-8 w-auto" />
         </div>
 
         {/* Desktop Nav */}
