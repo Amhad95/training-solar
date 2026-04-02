@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { Sun, Menu, Globe } from "lucide-react";
+import { Menu, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import radianceLogo from "@/assets/radiance-logo.png";
 
 export function LandingNavbar() {
   const { language, toggleLanguage, t } = useLanguage();
